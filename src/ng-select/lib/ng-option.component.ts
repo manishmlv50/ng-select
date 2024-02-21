@@ -22,6 +22,8 @@ export class NgOptionComponent implements OnChanges, AfterViewChecked, OnDestroy
     get disabled() { return this._disabled; }
     set disabled(value: any) { this._disabled = this._isDisabled(value) }
 
+    @Input() setclass:any;
+    
     readonly stateChange$ = new Subject<{ value: any, disabled: boolean, label?: string }>();
 
     private _disabled = false;
