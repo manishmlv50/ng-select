@@ -24,7 +24,7 @@ export class NgOptionComponent implements OnChanges, AfterViewChecked, OnDestroy
 
     @Input() setclass:any;
     
-    readonly stateChange$ = new Subject<{ value: any, disabled: boolean, label?: string }>();
+    readonly stateChange$ = new Subject<{ value: any, disabled: boolean, setclass?: string, label?: string }>();
 
     private _disabled = false;
     private _previousLabel: string;
@@ -39,6 +39,7 @@ export class NgOptionComponent implements OnChanges, AfterViewChecked, OnDestroy
         if (changes.disabled) {
             this.stateChange$.next({
                 value: this.value,
+                setclass: this.setclass,
                 disabled: this._disabled
             });
         }
@@ -50,6 +51,7 @@ export class NgOptionComponent implements OnChanges, AfterViewChecked, OnDestroy
             this.stateChange$.next({
                 value: this.value,
                 disabled: this._disabled,
+                setclass: this.setclass,
                 label: this.elementRef.nativeElement.innerHTML
             });
         }
